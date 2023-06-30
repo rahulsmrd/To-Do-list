@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block home_active %}active{% endblock %}
+{% block code %}
+{% if success %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Successfully added</strong> You can check your Tasks list in <a href="tasks/" style="text-decoration:none ">Tasks Tab</a>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>{% endif %}
+<h1 class="text-center mt-5" style="color: orange; text-decoration: underline;"> Welcome to ToDos List</h1>
+<h1 class="text-center mt-5" style="color: green;"> Add a Task </h1>
+<div class="container my-5 px-5">
+    <form action="/" method="post">
+      {% csrf_token %}
+        <div class="mb-3">
+          <label for="title" class="form-label"><b>Task Title *</b></label>
+          <input type="text" class="form-control fs-4" id="title" name="title" aria-describedby="emailHelp" required>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label"><b> Task Discription *</b></label>
+          <textarea class="form-control w-100 fs-4" cols=30 rows=7 id="description" name="description" required></textarea>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+          <label class="form-check-label" for="exampleCheck1"><b>Conform</b></label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+{% endblock %}
